@@ -121,6 +121,8 @@ const likelySubtagsMin = {
     "zh-tw": "zh-hant-tw",
     "zh-gb": "zh-hant-gb",
     "zh-us": "zh-hant-us",
+    "yue-hant": "zh-hant-hk",
+    "yue-hans": "zh-hans-cn",
 };
 const regionMatchingLangs = [
     "az",
