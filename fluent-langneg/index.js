@@ -1,9 +1,9 @@
-/* @fluent/langneg@0.5.2 */
+/** @fluent/langneg@0.7.0 */
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
     typeof define === 'function' && define.amd ? define('@fluent/langneg', ['exports'], factory) :
-    (global = global || self, factory(global.FluentLangNeg = {}));
-}(this, (function (exports) { 'use strict';
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FluentLangNeg = {}));
+})(this, (function (exports) { 'use strict';
 
     /* eslint no-magic-numbers: 0 */
     const languageCodeRe = "([a-z]{2,3}|\\*)";
@@ -53,24 +53,24 @@
             this.isWellFormed = true;
         }
         isEqual(other) {
-            return this.language === other.language
-                && this.script === other.script
-                && this.region === other.region
-                && this.variant === other.variant;
+            return (this.language === other.language &&
+                this.script === other.script &&
+                this.region === other.region &&
+                this.variant === other.variant);
         }
         matches(other, thisRange = false, otherRange = false) {
-            return (this.language === other.language
-                || thisRange && this.language === undefined
-                || otherRange && other.language === undefined)
-                && (this.script === other.script
-                    || thisRange && this.script === undefined
-                    || otherRange && other.script === undefined)
-                && (this.region === other.region
-                    || thisRange && this.region === undefined
-                    || otherRange && other.region === undefined)
-                && (this.variant === other.variant
-                    || thisRange && this.variant === undefined
-                    || otherRange && other.variant === undefined);
+            return ((this.language === other.language ||
+                (thisRange && this.language === undefined) ||
+                (otherRange && other.language === undefined)) &&
+                (this.script === other.script ||
+                    (thisRange && this.script === undefined) ||
+                    (otherRange && other.script === undefined)) &&
+                (this.region === other.region ||
+                    (thisRange && this.region === undefined) ||
+                    (otherRange && other.region === undefined)) &&
+                (this.variant === other.variant ||
+                    (thisRange && this.variant === undefined) ||
+                    (otherRange && other.variant === undefined)));
         }
         toString() {
             return [this.language, this.script, this.region, this.variant]
@@ -105,23 +105,23 @@
      * This version of the list is based on CLDR 30.0.3.
      */
     const likelySubtagsMin = {
-        "ar": "ar-arab-eg",
+        ar: "ar-arab-eg",
         "az-arab": "az-arab-ir",
         "az-ir": "az-arab-ir",
-        "be": "be-cyrl-by",
-        "da": "da-latn-dk",
-        "el": "el-grek-gr",
-        "en": "en-latn-us",
-        "fa": "fa-arab-ir",
-        "ja": "ja-jpan-jp",
-        "ko": "ko-kore-kr",
-        "pt": "pt-latn-br",
-        "sr": "sr-cyrl-rs",
+        be: "be-cyrl-by",
+        da: "da-latn-dk",
+        el: "el-grek-gr",
+        en: "en-latn-us",
+        fa: "fa-arab-ir",
+        ja: "ja-jpan-jp",
+        ko: "ko-kore-kr",
+        pt: "pt-latn-br",
+        sr: "sr-cyrl-rs",
         "sr-ru": "sr-latn-ru",
-        "sv": "sv-latn-se",
-        "ta": "ta-taml-in",
-        "uk": "uk-cyrl-ua",
-        "zh": "zh-hans-cn",
+        sv: "sv-latn-se",
+        ta: "ta-taml-in",
+        uk: "uk-cyrl-ua",
+        zh: "zh-hans-cn",
         "zh-hant": "zh-hant-tw",
         "zh-hk": "zh-hant-hk",
         "zh-mo": "zh-hant-mo",
@@ -409,8 +409,8 @@
      *
      *     This strategy requires defaultLocale option to be set.
      */
-    function negotiateLanguages(requestedLocales, availableLocales, { strategy = "filtering", defaultLocale, } = {}) {
-        const supportedLocales = filterMatches(Array.from(Object(requestedLocales)).map(String), Array.from(Object(availableLocales)).map(String), strategy);
+    function negotiateLanguages(requestedLocales, availableLocales, { strategy = "filtering", defaultLocale } = {}) {
+        const supportedLocales = filterMatches(Array.from(requestedLocales !== null && requestedLocales !== void 0 ? requestedLocales : []).map(String), Array.from(availableLocales !== null && availableLocales !== void 0 ? availableLocales : []).map(String), strategy);
         if (strategy === "lookup") {
             if (defaultLocale === undefined) {
                 throw new Error("defaultLocale cannot be undefined for strategy `lookup`");
@@ -437,6 +437,4 @@
     exports.filterMatches = filterMatches;
     exports.negotiateLanguages = negotiateLanguages;
 
-    Object.defineProperty(exports, '__esModule', { value: true });
-
-})));
+}));

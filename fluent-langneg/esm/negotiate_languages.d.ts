@@ -45,4 +45,4 @@ export interface NegotiateLanguagesOptions {
  *
  *     This strategy requires defaultLocale option to be set.
  */
-export declare function negotiateLanguages(requestedLocales: Readonly<Array<string>>, availableLocales: Readonly<Array<string>>, { strategy, defaultLocale, }?: NegotiateLanguagesOptions): Array<string>;
+export declare function negotiateLanguages(requestedLocales: Readonly<Array<string>>, availableLocales: Readonly<Array<string>>, { strategy, defaultLocale }?: NegotiateLanguagesOptions): Array<string>;

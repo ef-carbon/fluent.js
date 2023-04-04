@@ -42,8 +42,8 @@ import { filterMatches } from "./matches.js";
  *
  *     This strategy requires defaultLocale option to be set.
  */
-export function negotiateLanguages(requestedLocales, availableLocales, { strategy = "filtering", defaultLocale, } = {}) {
-    const supportedLocales = filterMatches(Array.from(Object(requestedLocales)).map(String), Array.from(Object(availableLocales)).map(String), strategy);
+export function negotiateLanguages(requestedLocales, availableLocales, { strategy = "filtering", defaultLocale } = {}) {
+    const supportedLocales = filterMatches(Array.from(requestedLocales !== null && requestedLocales !== void 0 ? requestedLocales : []).map(String), Array.from(availableLocales !== null && availableLocales !== void 0 ? availableLocales : []).map(String), strategy);
     if (strategy === "lookup") {
         if (defaultLocale === undefined) {
             throw new Error("defaultLocale cannot be undefined for strategy `lookup`");

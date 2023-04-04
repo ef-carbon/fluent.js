@@ -6,6 +6,6 @@
  * Project Fluent localization composition and fallbacking strategy.
  *
  */
-export { negotiateLanguages } from "./negotiate_languages";
-export { acceptedLanguages } from "./accepted_languages";
-export { filterMatches } from "./matches";
+export { negotiateLanguages, } from "./negotiate_languages.js";
+export { acceptedLanguages } from "./accepted_languages.js";
+export { filterMatches } from "./matches.js";
