@@ -8,7 +8,7 @@
     /* eslint no-magic-numbers: 0 */
     const languageCodeRe = "([a-z]{2,3}|\\*)";
     const scriptCodeRe = "(?:-([a-z]{4}|\\*))";
-    const regionCodeRe = "(?:-([a-z]{2}|\\*))";
+    const regionCodeRe = "(?:-([a-z]{2}|[0-9]{1,3}|\\*))";
     const variantCodeRe = "(?:-(([0-9][a-z0-9]{3}|[a-z0-9]{5,8})|\\*))";
     /**
      * Regular expression splitting locale id into four pieces:
@@ -130,6 +130,28 @@
         "zh-us": "zh-hant-us",
         "yue-hant": "zh-hant-hk",
         "yue-hans": "zh-hans-cn",
+        "es-AR": "es-419",
+        "es-BO": "es-419",
+        "es-BR": "es-419",
+        "es-BZ": "es-419",
+        "es-CL": "es-419",
+        "es-CO": "es-419",
+        "es-CR": "es-419",
+        "es-CU": "es-419",
+        "es-DO": "es-419",
+        "es-EC": "es-419",
+        "es-GT": "es-419",
+        "es-HN": "es-419",
+        "es-MX": "es-419",
+        "es-NI": "es-419",
+        "es-PA": "es-419",
+        "es-PE": "es-419",
+        "es-PR": "es-419",
+        "es-PY": "es-419",
+        "es-SV": "es-419",
+        "es-US": "es-419",
+        "es-UY": "es-419",
+        "es-VE": "es-419",
     };
     const regionMatchingLangs = [
         "az",
